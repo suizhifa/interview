@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzkj.file.interview.mapper.StartDateInfoMapper">
+    <select id="findOne" resultType="com.lzkj.file.interview.entity.StartDateInfo">
+        select * from start_date_info where id = #{id}
+    </select>
+    <insert id="insertStartDateInfoByBatch">
+    	insert into start_date_info (id,type,start_date) values
+    	<foreach collection="startDateInfos" item="startDateInfo" separator=",">(#{startDateInfo.id,jdbcType=INTEGER},#{startDateInfo.type,jdbcType=INTEGER},#{startDateInfo.startDate,jdbcType=DATE})</foreach> 	
+    </insert>
+</mapper>
